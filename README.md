@@ -115,7 +115,7 @@ The script supports the following input file formats:
 - GFF: General Feature Format, with each sequence in a separate entry.
 - TXT: Simple text format, with one sequence per line.
 
-## Contributing
+## Contributing:
 
 If you'd like to contribute to the project, please follow these steps:
 
@@ -125,11 +125,11 @@ If you'd like to contribute to the project, please follow these steps:
 4. Commit your changes and push them to your fork.
 5. Create a pull request and explain your changes.
 
-## License
+## License:
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-## Acknowledgements
+## Acknowledgements:
 
 - UniProt: Source of protein sequence data.
 - TensorFlow: Deep learning library used for model development.
