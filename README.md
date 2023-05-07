@@ -11,8 +11,6 @@
   <br />
   <br />
   <a href="<URL_TO_ISSUES_PAGE>">Report a Bug</a>
-  ·
-  <a href="<URL_TO_FEATURE_REQUEST_PAGE>">Request a Feature</a>
 </p>
 
 ## Table of Contents
