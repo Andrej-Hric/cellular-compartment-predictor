@@ -1,3 +1,5 @@
+NOTES = the git repository is https://github.com/Andrej-Hric/cellular-compartment-predictor.git so change accordingly in the rest of the code
+also note and include in this readme that the version of python needs to be <3.11 for Tensorflow.
 # Protein Subcellular Localization Predictor
 
 <p align="center">
@@ -73,7 +75,7 @@ You'll need to have the following software installed on your computer:
 
 1. Clone the repository:
    ```sh
-    git clone https://github.com/your_username/protein-localization-predictor.git
+    git clone https://github.com/Andrej-Hric/cellular-compartment-predictor.git
 2. Navigate to the cloned repository directory:
    ```sh
    cd protein-localization-predictor
