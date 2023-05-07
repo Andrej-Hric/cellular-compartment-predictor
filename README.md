@@ -69,15 +69,31 @@ You'll need to have the following software installed on your computer:
 - Python 3.x: Download and install the appropriate version for your operating system from [python.org](https://www.python.org/downloads/).
 - Git: Download and install the appropriate version for your operating system from [git-scm.com](https://git-scm.com/downloads).
 
-### Installation
+### Setting up a Virtual Environment
 
-1. Install the required Python libraries:
-    ```sh
-    pip install pandas numpy scikit-learn tensorflow biopython
-2. Clone the repository:
-    ```sh
-    git clone https://github.com/Andrej-Hric/cellular-compartment-predictor.git
-  
+1. Clone the repository:
+   ```sh
+    git clone https://github.com/your_username/protein-localization-predictor.git
+2. Navigate to the cloned repository directory:
+   ```sh
+   cd protein-localization-predictor
+3. Create a virtual environment:
+   ```sh
+    python3 -m venv cell_comp_project_env
+4. Activate the virtual environment:
+- For Windows:
+   ```sh
+   cell_comp_project_env\Scripts\activate
+- For macOS/Linux:
+   ```sh
+   source cell_comp_project_env/bin/activate
+
+
+### Installation
+- Install the required Python libraries:
+   ```sh
+   pip install pandas numpy scikit-learn tensorflow biopython
+
 
 ## Usage
 
