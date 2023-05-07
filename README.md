@@ -103,7 +103,7 @@ To use the Protein Subcellular Localization Predictor, follow these steps:
 2. Open a terminal window and navigate to the folder containing the `protein_localization_predictor.py` file.
 3. Run the following command:
     ```sh
-    python protein_localization_predictor.py
+    protein_localization_predictor.py
 4. The model will be trained and evaluated. The performance metrics will be displayed in the terminal.
 
 ## Input File Formats
