@@ -1,7 +1,7 @@
 # Protein Subcellular Localization Predictor
 
 <p align="center">
-  <img src="<URL_TO_LOGO_OR_ICON>" alt="Logo" width="80" height="80">
+  <img src="https://github.com/Andrej-Hric/cellular-compartment-predictor/blob/main/Logo/PSLP-logo_FREE_online.png"width="450">
 </p>
 
 <p align="center">
