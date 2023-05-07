@@ -44,21 +44,20 @@ If you would like to use a different protein sequence database instead of UniPro
 
 4. Verify that the remaining code works correctly with the new database. You may need to adjust the model architecture, hyperparameters, or training process based on the characteristics of the new data.
 
-### Potential Issues When Adapting the Code for Another Database
 
+### ⚠️Potential Issues When Adapting the Code for Another Database ⚠️
 While adapting the code for another protein sequence database, you may come across some issues or errors. Here are some common challenges you might face and need to address during the adaptation process:
 
-1. **API limitations**: Some databases may have limitations on the number of requests, rate limits, or require authentication. You may need to adjust the code accordingly to handle these limitations, which may include using API keys, implementing request throttling, or handling pagination.
+  1. **API limitations**: Some databases may have limitations on the number of requests, rate limits, or require authentication. You may need to adjust the code accordingly to handle these limitations, which may include using API keys, implementing request throttling, or handling pagination.
 
-2. **API response format**: Different databases may return data in various formats, such as JSON or XML. You will need to adapt the code to parse the new response format correctly and extract the relevant information.
+  2. **API response format**: Different databases may return data in various formats, such as JSON or XML. You will need to adapt the code to parse the new response format correctly and extract the relevant information.
 
-3. **Data preprocessing**: Depending on the new database, the data preprocessing steps might need to be adjusted to handle different data formats, attributes, or normalization methods.
+  3. **Data preprocessing**: Depending on the new database, the data preprocessing steps might need to be adjusted to handle different data formats, attributes, or normalization methods.
 
-4. **Model performance**: The performance of the LSTM model might be different when trained on data from a new database. You might need to experiment with different model architectures, hyperparameters, or training techniques to achieve optimal performance on the new dataset.
+  4. **Model performance**: The performance of the LSTM model might be different when trained on data from a new database. You might need to experiment with different model architectures, hyperparameters, or training techniques to achieve optimal performance on the new dataset.
 
-5. **Code compatibility**: There might be compatibility issues with the new database or the required libraries for handling the data, which may require updates or adjustments to the existing code.
-
-By being aware of these potential issues and addressing them as needed, you can successfully adapt the code to work with other protein sequence databases.
+  5. **Code compatibility**: There might be compatibility issues with the new database or the required libraries for handling the data, which may require updates or adjustments to the existing code.
+  
 
 
 ## Getting Started
