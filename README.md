@@ -1,5 +1,3 @@
-NOTES = the git repository is https://github.com/Andrej-Hric/cellular-compartment-predictor.git so change accordingly in the rest of the code
-also note and include in this readme that the version of python needs to be <3.11 for Tensorflow.
 # Protein Subcellular Localization Predictor
 
 <p align="center">
@@ -26,7 +24,8 @@ also note and include in this readme that the version of python needs to be <3.1
 - [Input File Formats](#input-file-formats)
 - [Contributing](#contributing)
 - [License](#license)
-- [Contact](#contact)
+
+
 
 
 ## About the Project
@@ -44,8 +43,7 @@ If you would like to use a different protein sequence database instead of UniPro
 
 4. Verify that the remaining code works correctly with the new database. You may need to adjust the model architecture, hyperparameters, or training process based on the characteristics of the new data.
 
-
-### ⚠️Potential Issues When Adapting the Code for Another Database ⚠️
+### ⚠️ Potential Issues When Adapting the Code for Another Database ⚠️
 While adapting the code for another protein sequence database, you may come across some issues or errors. Here are some common challenges you might face and need to address during the adaptation process:
 
   1. **API limitations**: Some databases may have limitations on the number of requests, rate limits, or require authentication. You may need to adjust the code accordingly to handle these limitations, which may include using API keys, implementing request throttling, or handling pagination.
@@ -75,7 +73,7 @@ You'll need to have the following software installed on your computer:
 
 1. Clone the repository:
    ```sh
-    git clone https://github.com/Andrej-Hric/cellular-compartment-predictor.git
+    git clone https://github.com/your_username/protein-localization-predictor.git
 2. Navigate to the cloned repository directory:
    ```sh
    cd protein-localization-predictor
@@ -129,7 +127,7 @@ If you'd like to contribute to the project, please follow these steps:
 
 ## License:
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the MIT License. 
 
 ## Acknowledgements:
 
