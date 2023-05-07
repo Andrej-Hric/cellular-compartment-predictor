@@ -89,8 +89,42 @@ To use the Protein Subcellular Localization Predictor, follow these steps:
 1. Save your protein sequences in a supported file format (CSV, FASTA, GFF, or TXT).
 2. Open a terminal window and navigate to the folder containing the `protein_localization_predictor.py` file.
 3. Run the following command:
+    ```sh
+    python protein_localization_predictor.py
+4. The model will be trained and evaluated. The performance metrics will be displayed in the terminal.
+
+## Input File Formats
+
+The script supports the following input file formats:
+
+- CSV: Comma-separated values format, with a header row.
+- FASTA: FASTA format, with each sequence preceded by a header line starting with '>'.
+- GFF: General Feature Format, with each sequence in a separate entry.
+- TXT: Simple text format, with one sequence per line.
+
+## Contributing
+
+If you'd like to contribute to the project, please follow these steps:
+
+1. Fork the repository.
+2. Create a branch with a descriptive name.
+3. Make changes to the code in your branch.
+4. Commit your changes and push them to your fork.
+5. Create a pull request and explain your changes.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## Acknowledgements
+
+- UniProt: Source of protein sequence data.
+- TensorFlow: Deep learning library used for model development.
+- Biopython: Library for handling FASTA and GFF files.
 
 
+
+       
 
 
 
