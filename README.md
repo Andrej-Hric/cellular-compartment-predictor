@@ -43,7 +43,7 @@ If you would like to use a different protein sequence database instead of UniPro
 
 4. Verify that the remaining code works correctly with the new database. You may need to adjust the model architecture, hyperparameters, or training process based on the characteristics of the new data.
 
-### ⚠️ Potential Issues When Adapting the Code for Another Database ⚠️
+### ⚠️Potential Issues When Adapting the Code for Another Database ⚠️
 While adapting the code for another protein sequence database, you may come across some issues or errors. Here are some common challenges you might face and need to address during the adaptation process:
 
   1. **API limitations**: Some databases may have limitations on the number of requests, rate limits, or require authentication. You may need to adjust the code accordingly to handle these limitations, which may include using API keys, implementing request throttling, or handling pagination.
@@ -55,7 +55,7 @@ While adapting the code for another protein sequence database, you may come acro
   4. **Model performance**: The performance of the LSTM model might be different when trained on data from a new database. You might need to experiment with different model architectures, hyperparameters, or training techniques to achieve optimal performance on the new dataset.
 
   5. **Code compatibility**: There might be compatibility issues with the new database or the required libraries for handling the data, which may require updates or adjustments to the existing code.
-  
+
 
 
 ## Getting Started
@@ -94,6 +94,11 @@ You'll need to have the following software installed on your computer:
    ```sh
    pip install pandas numpy scikit-learn tensorflow biopython
 
+
+### Installation
+- Install the required Python libraries:
+   ```sh
+   pip install pandas numpy scikit-learn tensorflow biopython
 
 ## Usage
 
@@ -134,6 +139,8 @@ This project is licensed under the MIT License.
 - UniProt: Source of protein sequence data.
 - TensorFlow: Deep learning library used for model development.
 - Biopython: Library for handling FASTA and GFF files.
+- Looka: Logo maker used to create the project logo.
+
 
 
 
