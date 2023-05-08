@@ -120,7 +120,19 @@ def train_and_evaluate_model(X, y):
     model.summary()
     model.fit(X_train, y_train, batch_size=32, epochs=10, validation_data=(X_test, y_test))
 
-def main(input_file):
+def output_results(predictions, output_file):
+    with open(output_file, 'w') as f:
+        for pred in predictions:
+            protein_id = pred['ID']
+            localization = pred['Subcellular Localization']
+            uniprot_url = f'https://www.uniprot.org/uniprot/{protein_id}'
+            
+            f.write(f'>{protein_id}\n')
+            f.write(f'\033[1m{localization}\033[0m\n')  # Bolding localization
+            f.write(f'{uniprot_url}\n\n')
+
+
+def main(input_file, output_file):
     """
     Main function to load data, preprocess it, and train and evaluate the LSTM model.
 
@@ -136,9 +148,17 @@ def main(input_file):
         print("Error: The input file must contain a 'Subcellular location [CC]' column.")
         return
     train_and_evaluate_model(X, y)
+    
+    # Make predictions using the trained model (assuming you have a `predict` function)
+    predictions = predict(X)
+    
+    # Save the results to the output file
+    output_results(predictions, output_file)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Protein Subcellular Localization Predictor")
     parser.add_argument("input_file", type=str, help="The path to the input file.")
+    parser.add_argument("output_file", type=str, help="The path to the output file.")
     args = parser.parse_args()
-    main(args.input_file)
+    main(args.input_file, args.output_file)
+
