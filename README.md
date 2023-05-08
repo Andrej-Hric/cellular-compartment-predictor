@@ -73,7 +73,7 @@ You'll need to have the following software installed on your computer:
 
 1. Clone the repository:
    ```sh
-    git clone (https://github.com/Andrej-Hric/cellular-compartment-predictor.git)
+    git clone https://github.com/Andrej-Hric/cellular-compartment-predictor.git
 2. Navigate to the cloned repository directory:
    ```sh
    cd protein-localization-predictor
