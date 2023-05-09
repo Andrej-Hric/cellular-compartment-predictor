@@ -68,7 +68,96 @@
             A += 0.07;
             B += 0.03;
           }
-          // precompute cosines and sines of A, B, theta, phi, same as before
-          var cA=Math.cos(A), sA=Math.sin(A),
-              cB=Math.cos(B), sB=Math.sin(B);
-         
+      // precompute cosines and sines of A, B, theta, phi, same as before
+      var cA=Math.cos(A), sA=Math.sin(A),
+          cB=Math.cos(B), sB=Math.sin(B);
+      for(var j=0;j<6.28;j+=0.2) { // j <=> theta
+        var ct=Math.cos(j),st=Math.sin(j);
+        for(var i=0;i<6.28;i+=0.05) {   // i <=> phi
+          var sp=Math.sin(i),cp=Math.cos(i),
+              h=ct+R2, // R1 + R2*cos(theta)
+              // final 3D (x,y,z) coordinate
+              x = Math.floor(canvastag.width/2 + K1*h*(cA*cp + sA*sp)),
+              y = Math.floor(canvastag.height/2 + K1*h*(sA*cp - cA*sp)),
+              // luminance index
+              L = (cB*ct*sA - cA*st*sB - cB*st*sA*cp + cA*ct*cp*sB + st*sA*sB*cp + st*cA*sB*sp),
+              // luminance is 0 to 1, black to white
+              // if it's out of range, clip it
+              lum = L*20,
+              // draw the circle
+              // use clipping to draw a circle
+              // draw a gray pixel instead of black pixel at the center of the circle for realism
+              pix = lum > 0 ? lum > 1 ? lum > 2 ? lum > 3 ? lum > 4 ? lum > 5 ? lum > 6 ? lum > 7 ? lum > 8 ? lum > 9 ? " " : "." : ":" : "-" : "=" : "+" : "*" : "#" : "%" : "@" : "#" : " ";
+          if (j >= 2.7 && j <= 3.4 && i >= 2.4 && i <= 3.4) {
+            ctx.fillStyle = '#3D9970'; // green
+          } else if (j >= 2.7 && j <= 3.4 && i >= 4.8 && i <= 5.5) {
+            ctx.fillStyle = '#FF4136'; // red
+          } else if (j >= 3.4 && j <= 4 && i >= 3.6 && i <= 4.3) {
+            ctx.fillStyle = '#0074D9'; // blue
+          } else {
+            ctx.fillStyle = '#' + pix + pix + pix;
+          }
+          ctx.fillRect(x, y, 1, 1);
+        }
+      }
+
+      // build the next text frame
+      textFrame = [
+        "Proteins Subcellular Localization Predictor",
+        "",
+        "Predict the localization of your protein of interest with high accuracy",
+        "using the latest deep learning techniques!",
+        "",
+        "Input a protein sequence (in FASTA format):",
+        ">protein_name",
+        "MTEITAAMVKELRESTGAGMMDCKNALSETNGDFDKAVQLLREKGLGKAAKKADRLAAEG",
+        "LVSVKVSDDFTIAAMRIGVELCVQEDDNVFHVVQEEFVSEMEN",
+        "",
+        "Output: Subcellular localization of the protein",
+        "",
+        "Contact: proteindonut@acme.com"
+      ];
+    };
+
+    var textframe=function() {
+      texttag.innerHTML = textFrame.slice(0, frameIndex).join(""); // update the text frame every 10 frames
+    };
+    var textInterval = 10;
+    var textCounter = textInterval - 1;
+    var textIndex = 0;
+    var updateText = function() {
+      textCounter++;
+      if(textCounter >= textInterval) {
+        textCounter = 0;
+        textIndex++;
+        if(textIndex >= textFrame.length) {
+          textIndex = 0;
+        }
+        texttag.innerHTML = textFrame[textIndex];
+      }
+    };
+
+    // animate the donut and canvas simultaneously
+    var animate = function() {
+      asciiframe();
+      canvasframe();
+      updateText();
+      tmr3 = setTimeout(animate, 30);
+    };
+
+    // start the animations
+    tmr1 = setTimeout(function() {
+      tmr2 = setInterval(canvasframe, 15);
+    }, 2000);
+    tmr3 = setTimeout(animate, 30);
+
+    // handle user input
+    var inputHandler = function() {
+      var input = prompt("Enter a protein sequence (in FASTA format):");
+      if(input) {
+        textFrame[7] = ">" + input;
+        textIndex = 0;
+        texttag.innerHTML = textFrame[textIndex];
+      }
+    };
+    texttag.onclick = inputHandler;
