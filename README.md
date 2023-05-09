@@ -1,8 +1,7 @@
 # Protein Subcellular Localization Predictor
 
-<p align="center">
-  <iframe src="Logo/logo_animation.html" width="500" height="500" frameborder="0"></iframe>
-</p>
+<iframe src="Logo/logo_animation.html" width="600" height="400"></iframe>
+
 
 
 <p align="center">
