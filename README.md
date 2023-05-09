@@ -1,11 +1,9 @@
 # Protein Subcellular Localization Predictor
 
 <p align="center">
-  <iframe src="https://github.com/Andrej-Hric/cellular-compartment-predictor/blob/main/Logo//anim.html" width="500" height="500"></iframe>
-
-  
-  
+  <iframe src="Logo/logo_animation.html" width="500" height="500" frameborder="0"></iframe>
 </p>
+
 
 <p align="center">
   A deep learning model to predict protein subcellular localization from amino acid sequences.
