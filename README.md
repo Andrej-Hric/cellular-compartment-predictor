@@ -1,8 +1,8 @@
 # Protein Subcellular Localization Predictor
 
-<p align="center">
-  <img src="https://github.com/Andrej-Hric/cellular-compartment-predictor/blob/main/Logo/PSLP-logo_FREE_online.png"width="450">
-</p>
+<iframe src="Logo/logo_animation.html" width="600" height="400"></iframe>
+
+
 
 <p align="center">
   A deep learning model to predict protein subcellular localization from amino acid sequences.
@@ -73,7 +73,7 @@ You'll need to have the following software installed on your computer:
 
 1. Clone the repository:
    ```sh
-    git clone https://github.com/your_username/protein-localization-predictor.git
+    git clone https://github.com/Andrej-Hric/cellular-compartment-predictor.git
 2. Navigate to the cloned repository directory:
    ```sh
    cd protein-localization-predictor
