@@ -99,8 +99,8 @@ You'll need to have the following software installed on your computer:
 
 ### Installation
 1.  Clone the Git repository:
-   ```sh
-   git clone https://github.com/Andrej-Hric/cellular-compartment-predictor.git
+     ```sh
+     git clone https://github.com/Andrej-Hric/cellular-compartment-predictor.git
 
 2. Change the current directory to the project folder:
    ```sh
