@@ -2,8 +2,10 @@ import os
 import pandas as pd
 from Bio import SeqIO
 from sklearn.preprocessing import LabelBinarizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 MAX_SEQUENCE_LENGTH = 1000
+
 
 
 def check_file_format(file_path, file_type):

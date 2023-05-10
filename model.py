@@ -37,7 +37,7 @@ def create_model(input_length):
     return model
 
 
-def train_and_evaluate_model(X, y):
+def train_and_evaluate_model(model, X, y):
     """
     Train and evaluate the LSTM model.
 
