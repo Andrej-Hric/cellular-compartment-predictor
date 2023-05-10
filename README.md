@@ -1,6 +1,6 @@
 # Protein Subcellular Localization Predictor
 <p align="center">
-  <img src="https://i.imgur.com/L8TXvKW.png" alt="Protein Subcellular Localization Predictor Logo">
+  <img src="https://i.imgur.com/L8TXvKW.png" alt="Protein Subcellular Localization Predictor Logo" width="150" height="150">>
 </p>
 
 <p align="center">
