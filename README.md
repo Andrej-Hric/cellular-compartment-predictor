@@ -132,13 +132,13 @@ To use the Protein Subcellular Localization Predictor, follow these steps:
 
 ### Running the Function
 To run the function, use the following command:
-      ```sh
-      python main.py <input_file> <output_file> [--model_file <model_file>]
-      ```
+   
+    python main.py <input_file> <output_file> [--model_file <model_file>
+  
 **Replace <input_file> with the path to your input file, <output_file> with the path to the output file, and <model_file> with the path to a saved model file (optional).** 
 
 ### Compatibility and Tensorflow Versions
-```TensorFlow package might have different compatibility requirements based on the system and hardware in use. Be sure to check the TensorFlow installation guide for detailed information: https://www.tensorflow.org/install.```
+**TensorFlow package might have different compatibility requirements based on the system and hardware in use. Be sure to check the TensorFlow installation guide for detailed information: https://www.tensorflow.org/install**
 
 This project is compatible with the following operating systems and devices:
 
