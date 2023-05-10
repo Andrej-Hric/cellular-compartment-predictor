@@ -1,6 +1,5 @@
 # Protein Subcellular Localization Predictor
-<p align="center">
-  <img src="Logo/PSLP-logo_FREE_online.png" alt="Protein Subcellular Localization Predictor Logo">
+<p align="center">   <img src="Logo/PSLP-logo_FREE_online.png" alt="Protein Subcellular Localization Predictor Logo">
 </p>
 
 <p align="center">
@@ -99,8 +98,8 @@ You'll need to have the following software installed on your computer:
 
 ### Installation
 1.  Clone the Git repository:
-   ```sh
-   git clone https://github.com/Andrej-Hric/cellular-compartment-predictor.git
+     ```sh
+     git clone https://github.com/Andrej-Hric/cellular-compartment-predictor.git
 
 2. Change the current directory to the project folder:
    ```sh
@@ -133,12 +132,13 @@ To use the Protein Subcellular Localization Predictor, follow these steps:
 
 ### Running the Function
 To run the function, use the following command:
-      ```sh
-      python main.py <input_file> <output_file> [--model_file <model_file>]
-**Replace <input_file> with the path to your input file, <output_file> with the path to the output file, and <model_file> with the path to a saved model file (optional).**
+   
+    python main.py <input_file> <output_file> [--model_file <model_file>
+  
+**Replace <input_file> with the path to your input file, <output_file> with the path to the output file, and <model_file> with the path to a saved model file (optional).** 
 
 ### Compatibility and Tensorflow Versions
-```TensorFlow package might have different compatibility requirements based on the system and hardware in use. Be sure to check the TensorFlow installation guide for detailed information: https://www.tensorflow.org/install.```
+**TensorFlow package might have different compatibility requirements based on the system and hardware in use. Be sure to check the TensorFlow installation guide for detailed information: https://www.tensorflow.org/install**
 
 This project is compatible with the following operating systems and devices:
 
