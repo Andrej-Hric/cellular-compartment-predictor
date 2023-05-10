@@ -3,33 +3,49 @@ import argparse
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from tensorflow.keras.models import Sequential, load_model
-from tensorflow.keras.layers import LSTM, Dense, Dropout, Embedding
+from tensorflow.keras.layers import LSTM, Dense, Dropout, Embedding, Bidirectional
 from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.regularizers import l1_l2
 from data_processing import load_data, preprocess_data, check_file_format
 
 
-def create_model(input_length):
+def create_model(input_length, output_length):
     """
-    Create and return the LSTM model.
+    Create and return the improved LSTM model.
 
     Parameters:
     input_length (int): The length of the input sequences.
+    output_length (int): The length of the output sequences.
 
     Returns:
     Sequential: The created Keras Sequential model.
     """
     model = Sequential()
+    
+    # Embedding layer for protein sequences
     model.add(Embedding(21, 128, input_length=input_length))
-    model.add(LSTM(128, return_sequences=True))
+    
+    # Bidirectional LSTM layers
+    model.add(Bidirectional(LSTM(128, return_sequences=True)))
+    model.add(Bidirectional(LSTM(128)))
+    
+    # Dropout and Dense layers with L1 and L2 regularization
     model.add(Dropout(0.5))
-    model.add(LSTM(64))
+    model.add(Dense(32, activation='relu', kernel_regularizer=l1_l2(l1=1e-5, l2=1e-4), bias_regularizer=l2(1e-4)))
     model.add(Dropout(0.5))
-    model.add(Dense(32, activation='relu'))
-    model.add(Dense(9, activation='softmax'))
+    
+    """
+    Regularization helps prevent overfitting by adding penalties to the loss function 
+    based on the weights of the model. L1 regularization adds a penalty proportional to the 
+    absolute value of the weights, while L2 regularization adds a penalty proportional 
+    to the square of the weights.
+    """
+
+    # Output layer
+    model.add(Dense(output_length, activation='softmax'))
 
     model.compile(
-        optimizer=Adam(lr=0.001),
+        optimizer=Adam(learning_rate=0.001),
         loss='categorical_crossentropy',
         metrics=['accuracy']
     )
@@ -39,7 +55,7 @@ def create_model(input_length):
 
 def train_and_evaluate_model(model, X, y):
     """
-    Train and evaluate the LSTM model.
+    Train and evaluate the improved LSTM model.
 
     Parameters:
     X (array-like): The preprocessed protein sequences.
@@ -51,7 +67,7 @@ def train_and_evaluate_model(model, X, y):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     input_length = X_train.shape[1]
 
-    model = create_model(input_length)
+    model = create_model(input_length, y_train.shape[1])
     model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=10, batch_size=32)
 
     scores = model.evaluate(X_test, y_test)
@@ -97,3 +113,4 @@ def load_saved_model(file_path):
     Sequential: The loaded Keras Sequential model.
     """
     return load_model(file_path)
+
