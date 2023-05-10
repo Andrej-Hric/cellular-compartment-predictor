@@ -1,6 +1,6 @@
 # Protein Subcellular Localization Predictor
 <p align="center">
-  <img src="Logo/PSLP-logo_FREE_online.png" alt="Protein Subcellular Localization Predictor Logo">
+  <img src="https://i.imgur.com/L8TXvKW.png" alt="Protein Subcellular Localization Predictor Logo">
 </p>
 
 <p align="center">
