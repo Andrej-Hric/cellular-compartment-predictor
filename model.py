@@ -1,11 +1,14 @@
 import os
 import argparse
 import pandas as pd
+import tensorflow as tf
 from sklearn.model_selection import train_test_split
-from tensorflow.keras.models import Sequential, load_model
-from tensorflow.keras.layers import LSTM, Dense, Dropout, Embedding, Bidirectional
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.regularizers import l1_l2
+from tensorflow import keras
+from keras.models import Sequential, load_model
+from keras.layers import LSTM, Dense, Dropout, Embedding, Bidirectional, GRU
+from keras.optimizers import Adam
+from keras.regularizers import l1_l2, l2
+from keras.callbacks import EarlyStopping
 from data_processing import load_data, preprocess_data, check_file_format
 
 
@@ -24,16 +27,16 @@ def create_model(input_length, output_length):
     
     # Embedding layer for protein sequences
     model.add(Embedding(21, 128, input_length=input_length))
-    
-    # Bidirectional LSTM layers
-    model.add(Bidirectional(LSTM(128, return_sequences=True)))
-    model.add(Bidirectional(LSTM(128)))
-    
+
+    # Bidirectional GRU layers
+    model.add(Bidirectional(GRU(256, return_sequences=True)))
+    model.add(Bidirectional(GRU(256)))
+
     # Dropout and Dense layers with L1 and L2 regularization
     model.add(Dropout(0.5))
-    model.add(Dense(32, activation='relu', kernel_regularizer=l1_l2(l1=1e-5, l2=1e-4), bias_regularizer=l2(1e-4)))
+    model.add(Dense(128, activation='relu', kernel_regularizer=l1_l2(l1=1e-5, l2=1e-4), bias_regularizer=l2(1e-4)))
     model.add(Dropout(0.5))
-    
+
     """
     Regularization helps prevent overfitting by adding penalties to the loss function 
     based on the weights of the model. L1 regularization adds a penalty proportional to the 
@@ -45,7 +48,7 @@ def create_model(input_length, output_length):
     model.add(Dense(output_length, activation='softmax'))
 
     model.compile(
-        optimizer=Adam(learning_rate=0.001),
+        optimizer=Adam(learning_rate=0.0005),
         loss='categorical_crossentropy',
         metrics=['accuracy']
     )
@@ -68,11 +71,14 @@ def train_and_evaluate_model(model, X, y):
     input_length = X_train.shape[1]
 
     model = create_model(input_length, y_train.shape[1])
-    model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=10, batch_size=32)
+
+    # Early stopping to avoid overfitting
+    early_stopping = EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=True)
+
+    model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=20, batch_size=64, callbacks=[early_stopping])
 
     scores = model.evaluate(X_test, y_test)
     print(f"Test accuracy: {scores[1] * 100:.2f}%")
-
 
 def predict(model, X):
     """

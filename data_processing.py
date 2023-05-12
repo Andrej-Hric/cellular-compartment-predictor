@@ -2,7 +2,8 @@ import os
 import pandas as pd
 from Bio import SeqIO
 from sklearn.preprocessing import LabelBinarizer
-from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow import keras
+from keras.preprocessing.sequence import pad_sequences
 
 MAX_SEQUENCE_LENGTH = 1000
 
@@ -19,7 +20,7 @@ def check_file_format(file_path, file_type):
     Returns:
     bool: True if the file format is correct, False otherwise.
     """
-    allowed_input_formats = {'.csv', '.fasta', '.gff', '.txt'}
+    allowed_input_formats = {'.csv', '.fasta', '.gff', '.txt', '.tsv'}
     allowed_output_formats = {'.csv'}
     _, file_extension = os.path.splitext(file_path)
 
@@ -44,6 +45,8 @@ def load_data(input_file):
     file_extension = os.path.splitext(input_file)[1]
     if file_extension == '.csv':
         data = pd.read_csv(input_file)
+    elif file_extension == '.tsv':
+        data = pd.read_csv(input_file, sep='\t')
     elif file_extension in ['.fasta', '.gff', '.txt']:
         records = list(SeqIO.parse(input_file, 'fasta'))
         data = pd.DataFrame(
@@ -74,21 +77,22 @@ def encode_sequence(sequence):
 
 def preprocess_data(data):
     """
-    Preprocess the input data and return the preprocessed data.
+    Preprocess the data by encoding the protein sequences and subcellular localizations.
 
     Parameters:
-    data (pd.DataFrame): The input data.
+    data (pd.DataFrame): The input data containing protein IDs, sequences, and subcellular localizations.
 
     Returns:
-    tuple: A tuple containing the preprocessed data (X, y).
+    tuple: A tuple containing the preprocessed protein sequences (X) and subcellular localizations (y).
     """
-    X = data['Sequence'].apply(encode_sequence)
-    X = pad_sequences(X, maxlen=MAX_SEQUENCE_LENGTH)
+    data['Subcellular location [CC]'] = data['Subcellular location [CC]'].astype(str)  # Add this line
 
-    if 'Subcellular location [CC]' in data.columns:
-        lb = LabelBinarizer()
-        y = lb.fit_transform(data['Subcellular location [CC]'])
-    else:
-        y = None
+    # Encode sequences
+    seq_encoded = data['Sequence'].apply(encode_sequence)
+    X = pad_sequences(seq_encoded, maxlen=None, dtype='int32', padding='post', value=0.0)
+
+    # Encode subcellular localizations
+    lb = LabelBinarizer()
+    y = lb.fit_transform(data['Subcellular location [CC]'])
 
     return X, y

@@ -1,6 +1,6 @@
 import argparse
 import pandas as pd
-from model import train_and_evaluate_model, predict, save_model, load_saved_model
+from model import create_model, train_and_evaluate_model, predict, save_model, load_saved_model
 from data_processing import load_data, preprocess_data, check_file_format
 
 def format_predictions(predictions, data):
@@ -16,7 +16,7 @@ def format_predictions(predictions, data):
     """
     formatted_predictions = []
     for i, pred in enumerate(predictions):
-        protein_id = data.iloc[i]['ID']
+        protein_id = data.iloc[i]['Protein_ID']
         localization = pred.argmax()  # Assuming localizations are one-hot encoded
         formatted_predictions.append({'ID': protein_id, 'Subcellular Localization': localization})
 
@@ -48,6 +48,7 @@ def main(input_file, output_file, model_file=None):
     Returns:
     None
     """
+    
     if not check_file_format(input_file, 'input'):
         print("Error: The input file must be in a supported format (CSV, FASTA, GFF, or TXT).")
         return
@@ -58,6 +59,10 @@ def main(input_file, output_file, model_file=None):
 
     data = load_data(input_file)
     X, y = preprocess_data(data)
+
+    if y is None:  # There is no target column for training
+        print("Error: No 'Subcellular location [CC]' column found in the input data.")
+        return
 
     if model_file:
         model = load_saved_model(model_file)
