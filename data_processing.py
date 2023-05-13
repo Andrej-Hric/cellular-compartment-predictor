@@ -5,7 +5,7 @@ from sklearn.preprocessing import LabelBinarizer
 from tensorflow import keras
 from keras.preprocessing.sequence import pad_sequences
 
-MAX_SEQUENCE_LENGTH = 1000
+MAX_SEQUENCE_LENGTH = 10000
 
 
 
